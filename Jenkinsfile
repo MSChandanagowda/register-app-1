@@ -62,7 +62,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'DockerHub', usernameVariable: 'DOCKERHUB_USER', passwordVariable: 'DOCKERHUB_PASS')]) {
                     script {
-                        docker.withRegistry('', 'dockerhub') {
+                        docker.withRegistry('', 'DockerHub') {
                             def docker_image = docker.build("${IMAGE_NAME}")
                             docker_image.push("${IMAGE_TAG}")
                             docker_image.push("latest")
